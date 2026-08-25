@@ -55,6 +55,7 @@ La partie la plus utile du dépôt. Tout est vérifié en production, pas dédui
 | Trait (`line`) | **oui** | `update_stroke_properties` |
 | **Fond de texte** | **non** | `not_permitted` sur `text-element` |
 | **Couleur cuite dans une image** | **non** | `not_permitted` sur `rect-element` |
+| **Fond de page** | **non** | aucune opération pour ça dans l'API |
 
 ### Le fond de texte n'est pas un élément
 
@@ -69,6 +70,18 @@ Conséquence pour qui construit un gabarit réutilisable : **un élément qui do
 Reproduit dans les quatre configurations : `back` sur la forme, `front` sur le texte, les deux dans la même transaction, et les deux séparés par un commit.
 
 Donc « forme derrière texte » ne se construit pas par API. Le partage qui fonctionne : **poser les formes par API** — la géométrie est exacte du premier coup, calculée depuis la boîte du texte — puis les **reculer à la main** dans l'éditeur, une fois, dans le gabarit.
+
+### Reculer la forme ne suffit pas : il faut aussi éteindre l'effet
+
+Une forme posée et reculée sous un texte qui porte encore son effet « Arrière-plan » coloré reste **totalement invisible** : l'effet la recouvre au pixel près, puisqu'il épouse la même boîte de texte. Le document rapporte la forme à la nouvelle couleur pendant que le rendu montre l'ancienne — rien n'a échoué, la couleur est cachée dessous.
+
+Le geste manuel est donc double, par pastille : reculer la forme **et** passer l'effet « Arrière-plan » du texte sur *Aucun*.
+
+### Le fond de page n'est pas modifiable par API
+
+`edit-design` accepte 27 types d'opérations et aucune ne touche au fond de page. Le fond se lit pourtant, dégradé compris — lisible, non modifiable.
+
+Donc : une page qui doit se re-thémer se construit sur un fond neutre, la couleur client étant portée par une forme posée dessus. Un fond coloré est un choix définitif.
 
 ### Ne jamais vérifier un rendu sur une vignette
 

@@ -459,6 +459,16 @@ Reproduit dans les quatre configurations : `position: back` sur la forme, `posit
 
 **Le partage de travail qui marche** : poser les formes **par API** — la géométrie est exacte du premier coup, calculée depuis la boîte du texte — puis les **reculer à la main** dans l'éditeur, où l'opération fonctionne normalement. Un geste par forme, et le gabarit devient re-thèmable pour toujours.
 
+**Reculer la forme ne suffit pas : il faut aussi éteindre l'effet.** Une forme posée et reculée sous un texte qui porte encore son effet « Arrière-plan » coloré reste **totalement invisible** — l'effet la recouvre exactement, au pixel près, puisqu'il épouse la même boîte de texte. Le document rapporte alors la forme à la nouvelle couleur pendant que le rendu montre l'ancienne : rien n'a échoué, la couleur est simplement cachée dessous. Le geste manuel est donc **double, par pastille** : reculer la forme *et* passer l'effet « Arrière-plan » du texte sur **Aucun**. Tant que le second manque, la page ne se re-thème pas et la couleur du gabarit se propage à tous les decks clients.
+
+### Le fond de page n'est pas modifiable par API
+
+`edit-design` accepte exactement 27 types d'opérations, et **aucune ne touche au fond de page** : `update_title`, `replace_text`, `update_fill`, `insert_fill`, `delete_element`, `find_and_replace_text`, `position_element`, `resize_element`, `format_text`, `add_text`, `insert_shape`, `replace_shape`, `add_page`, `update_opacity`, `layer_element`, `recolor_element`, `rotate_element`, `group_elements`, `ungroup_elements`, `flip_media`, `crop_media`, `reorder_page`, `replace_speaker_notes`, `update_text_anchoring`, `update_stroke_properties`, `update_line_properties`, `update_autofill_field`.
+
+Le fond apparaît pourtant en lecture, dégradé compris (`background.color.type: "linear_gradient"` avec ses `stops`) — **lisible, non modifiable**. Toute page dont le fond porte une couleur de marque garde donc celle du gabarit dans tous les decks clients.
+
+**Conséquence pour le gabarit** : une page qui doit se re-thémer se construit sur un fond neutre (noir ou blanc), la couleur client étant portée par une **forme** posée dessus. Un fond coloré est un choix définitif, à réserver aux pages qui doivent rester aux couleurs de l'agence.
+
 **Piège de vérification associé, et sa solution** : le service de miniatures sert des versions en cache, signalées par `fallbackstale=T` dans l'URL. Après une modification de couleur ou de calque, une miniature peut montrer l'état d'avant — et deux pages du même appel peuvent revenir l'une fraîche, l'autre périmée. Ne jamais confirmer un état sur une vignette marquée stale.
 
 **La méthode fiable, c'est `export-design`** (constatée le 25/08/2026). Un export PNG avec `format.pages` sur les seules pages à contrôler force un rendu neuf, hors cache, et se télécharge en une commande. C'est la seule vérification qui fait autorité sans ouvrir l'éditeur — beaucoup plus rapide et plus sûr que de piloter le navigateur, qui se bat avec un filmstrip virtualisé et une vue grille capricieuse.
