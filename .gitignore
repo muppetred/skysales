@@ -1,0 +1,15 @@
+# caches Python
+__pycache__/
+*.py[cod]
+
+# sauvegardes locales du skill
+*.bak
+*.bak-*
+
+# dumps de designs et exports de contrôle
+dump*.json
+*.png
+verif/
+
+# macOS
+.DS_Store
