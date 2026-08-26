@@ -137,10 +137,10 @@ Une fois les trois vérifs OK, enchaîner sur la Phase 1 (extraction) puis la Ph
 
 1. **Sortie Canva obligatoire.** Le but de l'exercice est un deck Canva, pas un doc texte. Le texte structuré n'est qu'une étape intermédiaire de validation.
 2. **P1 intacte, sauf pour la langue.** Le skill ne touche qu'aux zones listées dans la carte (toutes dans P2) : le contenu de P1 est du boilerplate agence, jamais réécrit. **Une seule exception, et elle est impérative : la langue** (voir règle 8 bis). Traduire P1 n'est pas la réécrire — c'est le même discours dans la langue du deck.
-3. **Jamais de donnée inventée.** Stats secteur (`XX %`), prix (`X XXX €`), durées, volumes : le lead ou les docs fournissent. Si une donnée manque, la réclamer ou laisser un marqueur `TODO` explicite dans le deck. Jamais de chiffre plausible inventé.
+3. **Jamais de donnée inventée.** Stats secteur (`XX %`), prix (`X XXX €`), durées, volumes : le lead ou les docs fournissent. Si une donnée manque, ne pas s'arrêter pour la réclamer : laisser un marqueur `TODO` explicite dans le deck, continuer le run, et lister le manque dans le rapport de livraison. Jamais de chiffre plausible inventé.
 4. **Jamais de constat inventé.** Diagnostic, frictions, priorités : viennent des docs client ou du lead. Pas de constat déduit du seul nom de l'entreprise.
 5. **Filtre anti-AI** sur tout le texte visible. Voir Phase 6 et `references/writing-filter.md`. Tout texte destiné au lecteur final passe par ce filtre avant validation.
-6. **Validation avant commit.** Aucun `commit-editing-transaction` sans OK explicite du lead sur les aperçus.
+6. **Committer sans demander, livrer pour faire valider.** Committer n'est pas livrer : la copie reste privée tant que son lien n'a pas été donné. `commit-editing-transaction` part dès qu'un lot est écrit — un run interrompu sur une transaction ouverte perd tout son travail. La validation du lead porte sur le deck fini qu'on lui remet, jamais sur l'autorisation d'écrire dedans. **Le run va de l'intake à la livraison sans s'arrêter** : les seuls arrêts légitimes sont un master mort, un master pollué par le contenu d'un vrai client, ou l'absence de compte rendu du premier rendez-vous. Tout le reste — logo introuvable, vidéo manquante, chiffre absent, couleur non recolorable — se tranche, s'applique, et se remonte en hypothèse dans le rapport de livraison. Une hypothèse écrite se corrige en trente secondes ; le temps passé à attendre une réponse ne se récupère pas.
 7. **Budget caractères et sauts de ligne.** Les pages sont fixes (`is_responsive: false`), le texte ne reflue pas. Chaque zone a un budget mesuré sur le texte d'origine. Écrire avec des sauts de ligne `\n` explicites : certains cadres débordent derrière un média (ex : points du diagnostic intro sous la vidéo), et sans `\n` l'auto-wrap fait passer le texte sous le média. Respecter un budget PAR LIGNE, pas seulement total.
 8. **Langue selon le client** (EN / FR). Demander avant de remplir. Ponctuation française si FR (espaces avant `: ; ! ?`, guillemets « »). Pas de tiret cadratin. Le filtre anti-AI couvre EN et FR (voir `references/writing-filter.md`).
 8 bis. **Un deck a UNE langue, et toutes ses slides la parlent.** Deck en français → les 43 pages sont en français, P1 comprise. Deck en anglais → les 43 pages sont en anglais. Il n'existe pas de deck moitié-moitié. Un prospect francophone qui tourne la page et tombe sur « 6 weeks to launch » voit un template, pas une proposition écrite pour lui — et c'est exactement l'inverse de ce que le P2 essaie de démontrer.
@@ -573,9 +573,11 @@ Guide par section (but, ce qu'il faut, patron d'écriture, propre au client vs f
 
 ---
 
-## PHASE 4 : VALIDATION INTERMÉDIAIRE
+## PHASE 4 : TRACE, PAS BARRAGE
 
-Sortir un mapping `label de zone` → `texte proposé`, avec pour chaque : budget vs longueur réelle, et alerte si donnée manquante (`TODO`). Format markdown, dans le dossier de travail sélectionné. Le lead valide ou corrige avant tout push.
+Sortir un mapping `label de zone` → `texte proposé`, avec pour chaque : budget vs longueur réelle, et alerte si donnée manquante (`TODO`). Format markdown, dans le dossier de travail sélectionné.
+
+Ce mapping n'est **pas une étape de validation** : c'est une trace, et elle part **avec** le deck à la livraison, jamais avant. Le lead lit le deck fini et le mapping en même temps, puis corrige ce qu'il veut en une seule passe. Ne jamais suspendre le run pour le lui faire relire.
 
 ---
 
@@ -607,10 +609,10 @@ On édite P2 par morceaux (chunks), puis on assemble.
 - **Pourquoi des morceaux** : une transaction sur les 42 pages renvoie un payload trop gros à relire ; un chunk de ~5 pages reste lisible. Donc éditer P2 en chunks de ~5 pages en place, jamais en une transaction sur tout le deck.
 - **Assemblage** : une fois les chunks édités et validés, les assembler en un deck complet. En attendant, chaque chunk édité est livrable tel quel.
 
-### Lien et validation
-1. Dès la copie créée (`copy-design`), la **renommer** (`update_title` → « Socialsky - SD Sales - [Client] ») et donner son lien d'édition au lead : il suit les édits en direct.
-2. Montrer les aperçus (thumbnails draft) au lead, page par page.
-3. OK explicite → `commit-editing-transaction`. Sinon `cancel-editing-transaction`.
+### Lien et livraison
+1. Dès la copie créée (`copy-design`), la **renommer** (`update_title` → « Socialsky - SD Sales - [Client] ») et donner son lien d'édition au lead : il suit les édits en direct s'il le souhaite, sans que le run l'attende.
+2. Après chaque lot, vérifier le **document renvoyé par l'API** — texte, largeur, hauteur, corps de police — et corriger par le calcul. Pas d'images à ce stade, pas de validation demandée au lead.
+3. `commit-editing-transaction` dès que le lot est écrit et vérifié. `cancel-editing-transaction` seulement si le lot est raté et doit être refait.
 4. **Contrôle qualité obligatoire** (Phase 5 bis). Ne pas livrer tant qu'il reste un bloquant.
 5. **Déplacer la copie dans `Sales Desk - Finaux`** (`<DOSSIER_SORTIE>`) via `move-item-to-folder`. C'est la sortie du processus : un deck fini ne reste pas à la racine.
 6. Livrer le **lien d'édition** (`edit_url`), pas le `view_url` ni un PDF — le commercial ajuste le deck avant et pendant le rendez-vous.
