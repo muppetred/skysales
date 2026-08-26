@@ -31,7 +31,7 @@ Le skill produit cette partie sur-mesure : il copie un master Canva neutre, écr
 git clone https://github.com/muppetred/skysales.git ~/.claude/skills/skysales
 ```
 
-Le skill a besoin du connecteur Canva. Apify sert au scraping des vidéos. Les identifiants de designs sont remplacés par des placeholders `<MASTER_FR>`, `<DIGEST>` — à renseigner avec les vôtres.
+Le skill a besoin du connecteur Canva. Apify sert au scraping des vidéos. Les identifiants de designs sont remplacés par des placeholders `<MASTER_FR>`, `<MASTER_EN>`, `<MASTER_NL>`, `<DIGEST>` — à renseigner avec les vôtres.
 
 ## Contrôler un deck avant de le sortir
 
