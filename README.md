@@ -19,6 +19,7 @@ Le skill produit cette partie sur-mesure : il copie un master Canva neutre, écr
 | Fichier | Rôle |
 |---|---|
 | `SKILL.md` | Le skill. Règles non négociables, mécanique Canva vérifiée, phases du run. |
+| `DUST-AGENT.md` | Le même skill déployé comme agent [Dust](https://dust.tt), pour les commerciaux. Version condensée, alignée sur `SKILL.md` côté comportement. |
 | `references/writing-filter.md` | Filtre anti-AI, FR et EN. Vocabulaire banni, patterns structurels, principes pour le texte court de deck. |
 | `references/content-playbook.md` | Voix de marque et patrons de rédaction par section. |
 | `references/template-map.md` | Carte historique d'un master disparu. Référence documentaire, ne fait plus autorité. |
