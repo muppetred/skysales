@@ -138,7 +138,7 @@ Une fois les trois vérifs OK, enchaîner sur la Phase 1 (extraction) puis la Ph
 
 1. **Sortie Canva obligatoire.** Le but de l'exercice est un deck Canva, pas un doc texte. Le texte structuré n'est qu'une étape intermédiaire de validation.
 2. **P1 intacte, sauf pour la langue.** Le skill ne touche qu'aux zones listées dans la carte (toutes dans P2) : le contenu de P1 est du boilerplate agence, jamais réécrit. **Une seule exception, et elle est impérative : la langue** (voir règle 8 bis). Traduire P1 n'est pas la réécrire — c'est le même discours dans la langue du deck.
-3. **Jamais de donnée inventée.** Stats secteur (`XX %`), prix (`X XXX €`), durées, volumes : le lead ou les docs fournissent. Si une donnée manque, ne pas s'arrêter pour la réclamer : laisser un marqueur `TODO` explicite dans le deck, continuer le run, et lister le manque dans le rapport de livraison. Jamais de chiffre plausible inventé.
+3. **Jamais de donnée inventée.** Stats secteur (`XX %`), durées, volumes : le lead ou les docs fournissent. **Le prix fait exception : il se calcule**, depuis le scope convenu au R1 et la grille tarifaire de l'agence, selon `references/pricing.md`. Un prix recopié d'un lead sans être vérifié contre le scope est un prix non sourcé. Si une donnée manque, ne pas s'arrêter pour la réclamer : laisser un marqueur `TODO` explicite dans le deck, continuer le run, et lister le manque dans le rapport de livraison. Jamais de chiffre plausible inventé.
 4. **Jamais de constat inventé.** Diagnostic, frictions, priorités : viennent des docs client ou du lead. Pas de constat déduit du seul nom de l'entreprise.
 5. **Filtre anti-AI** sur tout le texte visible. Voir Phase 6 et `references/writing-filter.md`. Tout texte destiné au lecteur final passe par ce filtre avant validation.
 6. **Committer sans demander, livrer pour faire valider.** Committer n'est pas livrer : la copie reste privée tant que son lien n'a pas été donné. `commit-editing-transaction` part dès qu'un lot est écrit — un run interrompu sur une transaction ouverte perd tout son travail. La validation du lead porte sur le deck fini qu'on lui remet, jamais sur l'autorisation d'écrire dedans. **Le run va de l'intake à la livraison sans s'arrêter** : les seuls arrêts légitimes sont un master mort, un master pollué par le contenu d'un vrai client, ou l'absence de compte rendu du premier rendez-vous. Tout le reste — logo introuvable, vidéo manquante, chiffre absent, couleur non recolorable — se tranche, s'applique, et se remonte en hypothèse dans le rapport de livraison. Une hypothèse écrite se corrige en trente secondes ; le temps passé à attendre une réponse ne se récupère pas.
@@ -566,6 +566,7 @@ Confirmer ce qui est compris, ne demander que ce qui manque.
 - **Langue du deck** : EN / FR.
 - **Nom client** tel qu'il apparaîtra.
 - **Données manquantes** : tout `XX %` ou `X XXX €` sans source. Réclamer ou marquer `TODO`.
+- **Paramètres de pricing** : ce qui manque au compte rendu R1 pour calculer le prix (volumes par plateforme, profils alloués, critères de complexité, droits à l'image). Liste exacte dans `references/pricing.md` §3. S'il ne manque que des critères, calculer un plancher en hypothèses basses ; sans type d'offre ni volumes, le montant reste `X,XXX €` + `TODO`.
 - **Cardinalité** : 2 ou 3 priorités ? 3 piliers de contenu ? Combien de cases pertinents ?
 
 ---
@@ -733,6 +734,7 @@ Les blocs marqués DONNÉES ne sont jamais remplis sans source.
 
 - `references/content-playbook.md` : moteur de contenu, conventions de marque, voix, extraction, interview, guide par section. **Fait autorité.**
 - `references/writing-filter.md` : filtre anti-AI (EN / FR) + principes d'écriture pour le texte court de deck. **Fait autorité.**
+- `references/pricing.md` : construction du prix à partir du scope R1, portée depuis l'agent de pricing interne de l'agence. Interne time-based, externe package-based. Source de vérité : la grille tarifaire (`<GRILLE_TARIFAIRE>`), **lue à chaque run** (aucun taux ni temps n'est recopié dans le skill). **Fait autorité.**
 - `references/template-map.md` : ⚠️ **PÉRIMÉ, ne fait plus autorité.** Décrit le master `<DESIGN_ID>`, mort depuis. Conservé comme référence de la structure de P2 et du vocabulaire des zones, utile pour rédiger les placeholders d'un futur master neutre. La carte réelle se dérive du master lu à chaque run.
 - *(Le journal des corrections du lead, qui documente l'origine de chaque règle, reste interne.)*
 - `scripts/qa_deck.py` : le contrôle qualité. Bloquants = placeholders, résidus, page d'échafaudage, incohérence de langue, mentions de prix manquantes, autre client cité hors page de référence. À confirmer = ce qui demande un arbitrage humain.

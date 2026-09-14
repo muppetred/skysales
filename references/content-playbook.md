@@ -94,4 +94,4 @@ But : surtout FIXE (process socialsky standard). Ajuster à la marge : langues (
 But : ce qui est inclus. Bloc de livrables avec les VOLUMES du client (12 TikTok, 16 Meta, etc., fournis par le lead). Add-ons (Paid media, Podcast, Influence) : garder, retirer, ou ajouter selon l'offre.
 
 ### Pricing (p41)
-But : Setup one-shot + Monthly pack. DONNÉES : montants fournis par le lead, jamais inventés. Descriptions reprennent le scope. Si un montant manque, `X,XXX €` + TODO.
+But : Setup one-shot + Monthly pack. DONNÉES : montants **calculés** depuis le scope R1 selon `references/pricing.md` (one-shot vers Setup, récurrent vers Monthly pack). Descriptions reprennent le scope, et la page scope décrit exactement le périmètre facturé. Si le calcul est impossible, `X,XXX €` + TODO.

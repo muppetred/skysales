@@ -22,6 +22,7 @@ Le skill produit cette partie sur-mesure : il copie un master Canva neutre, écr
 | `DUST-AGENT.md` | Le même skill déployé comme agent [Dust](https://dust.tt), pour les commerciaux. Version condensée, alignée sur `SKILL.md` côté comportement. |
 | `references/writing-filter.md` | Filtre anti-AI, FR et EN. Vocabulaire banni, patterns structurels, principes pour le texte court de deck. |
 | `references/content-playbook.md` | Voix de marque et patrons de rédaction par section. |
+| `references/pricing.md` | Construction du prix à partir du scope du premier rendez-vous. Méthode time-based en interne, offre package côté client. La grille tarifaire elle-même n'est pas publiée. |
 | `references/template-map.md` | Carte historique d'un master disparu. Référence documentaire, ne fait plus autorité. |
 | `scripts/qa_deck.py` | Contrôle qualité avant sortie. Sépare ce qui bloque de ce qui demande un arbitrage humain. |
 
@@ -99,5 +100,7 @@ Un texte créé par API retombe sur une police Canva par défaut, et `format_tex
 ## Ce qui n'est pas dans ce dépôt
 
 Le skill d'origine cite nommément le portefeuille client de l'agence, des prospects en cours de négociation, et contient un journal de quarante-neuf corrections internes nominatives. Tout cela a été retiré ou anonymisé avant publication.
+
+La grille tarifaire de l'agence (taux horaires, temps par livrable, seuils, forfaits) n'est pas publiée non plus : `references/pricing.md` décrit la méthode et le format attendu de la grille, pas ses valeurs.
 
 Ce qui reste est la méthode et la mécanique. Les identifiants de designs Canva sont remplacés par des placeholders : le skill n'est pas exécutable tel quel, il se paramètre.
