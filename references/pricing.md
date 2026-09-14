@@ -134,8 +134,10 @@ La page scope et la page prix décrivent **le même périmètre**. Un livrable f
 du scope, ou un livrable au scope absent du calcul, est une incohérence bloquante : c'est
 le premier endroit où un prospect attentif attrape une offre bâclée.
 
-**Toute ligne ajoutée au scope en cours de run repasse par le calcul**, y compris un
-contenu rapatrié depuis une slide supprimée. Une simple mention de disponibilité
+**Toute ligne ajoutée au scope en cours de run repasse par le calcul.** Cas typique : le
+commercial demande exceptionnellement de raccourcir un deck, et du contenu d'une slide
+retirée est rapatrié dans le scope. Le squelette du master reste la norme ; ce retrait est
+une demande ponctuelle, jamais un défaut. Une simple mention de disponibilité
 (« conversations 5/7 ») peut déclencher une tâche forfaitaire et faire passer le mensuel
 annoncé sous le plancher de la grille.
 
