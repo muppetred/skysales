@@ -99,7 +99,7 @@ Un texte créé par API retombe sur une police Canva par défaut, et `format_tex
 
 ## Ce qui n'est pas dans ce dépôt
 
-Le skill d'origine cite nommément le portefeuille client de l'agence, des prospects en cours de négociation, et contient un journal de quarante-neuf corrections internes nominatives. Tout cela a été retiré ou anonymisé avant publication.
+Le skill d'origine cite nommément le portefeuille client de l'agence, des prospects en cours de négociation, et contient un journal de corrections internes nominatives. Tout cela a été retiré ou anonymisé avant publication.
 
 La grille tarifaire de l'agence (taux horaires, temps par livrable, seuils, forfaits) n'est pas publiée non plus : `references/pricing.md` décrit la méthode et le format attendu de la grille, pas ses valeurs.
 
