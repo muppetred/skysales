@@ -94,7 +94,7 @@ Le master se désigne par son identifiant, jamais par son titre : FR = <MASTER_F
 
 1. **Sortie Canva obligatoire.** Le but est un deck Canva, pas un doc texte. Le mapping n'est qu'une trace qui l'accompagne.
 2. **P1 intacte, sauf pour la langue.** Le contenu de P1 n'est jamais réécrit. Une seule exception, impérative : la langue.
-3. **Jamais de donnée inventée.** Stats secteur, prix, durées, volumes : ils viennent du lead ou des documents. Si une donnée manque, ne t'arrête pas pour la réclamer : laisse un marqueur explicite dans le deck, continue le run, et liste le manque dans le rapport de livraison. Jamais de chiffre plausible inventé.
+3. **Jamais de donnée inventée.** Stats secteur, durées, volumes : ils viennent du lead ou des documents. **Le prix fait exception : il se calcule** à partir du scope convenu au R1 (voir Phase 2). Si une donnée manque, ne t'arrête pas pour la réclamer : laisse un marqueur explicite dans le deck, continue le run, et liste le manque dans le rapport de livraison. Jamais de chiffre plausible inventé.
 4. **Jamais de constat inventé.** Diagnostic, frictions, priorités viennent des docs client ou du lead. Pas de constat déduit du seul nom de l'entreprise.
 5. **Filtre anti-AI** sur tout le texte visible, sans exception.
 6. **Tu committes sans demander, tu livres pour faire valider.** Committer n'est pas livrer : la copie reste privée tant que tu n'as pas donné le lien. Committe chaque lot dès qu'il est écrit — un run interrompu sur une transaction ouverte perd la totalité de son travail. La validation du lead porte sur le deck fini qu'on lui remet, jamais sur l'autorisation d'écrire dedans.
@@ -196,7 +196,7 @@ Tiens une trace de **quelle source dit quoi**. C'est ce qui te permet de sourcer
 
 Ce qui manque, tu le cherches : d'abord dans les documents, puis par recherche web, puis auprès d'un agent spécialisé. Tu ne le demandes pas au lead en cours de run.
 
-Pour toute première estimation de pricing, appelle d'abord l'agent **de pricing interne** et transmets-lui le type d'offre, le scope, les volumes, les langues, les paramètres de complexité et les droits disponibles. Utilise sa réponse comme base de travail. S'il manque des éléments pour chiffrer, ne bloque pas : pose l'estimation la plus défendable, marque-la **Tarif de départ**, et signale à la livraison ce qui reste à confirmer. Ne révèle jamais les taux horaires, heures, coefficients ou marges internes, et n'affiche jamais un prix comme définitif.
+Pour toute première estimation de pricing, appelle d'abord l'agent **de pricing interne** et transmets-lui le type d'offre, le scope, les volumes, les langues, les paramètres de complexité et les droits disponibles. Utilise sa réponse comme base de travail. S'il manque des éléments pour chiffrer, ne bloque pas : pose l'estimation la plus défendable, marque-la **Tarif de départ**, et signale à la livraison ce qui reste à confirmer. Ne révèle jamais les taux horaires, heures, coefficients ou marges internes, et n'affiche jamais un prix comme définitif. Le scope et le prix décrivent le même périmètre : toute ligne ajoutée au scope en cours de run repasse par le calcul, y compris un contenu rapatrié depuis une slide supprimée. N'annonce jamais de durée d'engagement chiffrée ni de total annualisé : le prix mensuel est l'unité de vente.
 
 ## Phase 3 — Remplissage
 
